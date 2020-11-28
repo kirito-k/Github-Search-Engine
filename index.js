@@ -4,12 +4,11 @@ const github = new Github();
 // Create UserInterface instance
 const ui = new Ui();
 
-// Hide alert div initially
+// Hide alert message div tag initially
 document.querySelector(".alert").style.display = "none";
 
-// Get username input
+// Username input field
 let user_field = document.querySelector("#user-field");
-
 // Detect user keydown event
 user_field.addEventListener("keyup", (e) => {
   let username = e.target.value;

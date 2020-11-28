@@ -1,10 +1,11 @@
+// UI methods to manipulate frontend
 class Ui {
-  // UI methods to manipulate frontend display
   constructor() {
     this.profile = document.querySelector("#profile");
+    this.repos = document.querySelector("#repos");
   }
 
-  // Display user profile
+  // Display user information part
   showProfile(userData) {
     this.profile.innerHTML = `
         <div class="card card-body mt-2">
@@ -29,8 +30,33 @@ class Ui {
         `;
   }
 
+  // Display user repositories part
   showRepos(userRepo) {
     console.log(userRepo);
+    let content = "<h2 class='m-2'>Latest Repos</h2>";
+    userRepo.forEach((repo) => {
+      content += `
+        <div class="card card-body mb-2">
+        <div class="row">
+            <div class="col-md-4">
+            <a href="${repo.html_url}">${repo.name}</a>
+            </div>
+            <div class="col-md-8 mr">
+            <button type="button" class="btn btn-sm btn-primary">
+                Stars: ${repo.stargazers_count}
+            </button>
+            <button type="button" class="btn btn-sm btn-dark">
+                Forks: ${repo.forks_count}
+            </button>
+            <button type="button" class="btn btn-sm btn-warning">
+                Language: ${repo.language}
+            </button>
+            </div>
+        </div>
+        </div>
+      `;
+    });
+    this.repos.innerHTML = content;
   }
 
   // Clear results if search bar is empty

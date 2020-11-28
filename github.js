@@ -1,3 +1,4 @@
+// Performs all Github fetch operations
 class Github {
   constructor() {
     let config;
@@ -11,16 +12,18 @@ class Github {
       });
 
     this.repo_count = 5;
-    this.order = "created";
+    this.order = "created: asc ";
   }
 
   async getUserProfile(user) {
+    // Get user profile info
     let profile_url = `https://api.github.com/users/${user}?client_id=${this.client_id}&client_secret=${this.client_secret}`;
-
-    let repo_url = `https://api.github.com/users/${user}/repos?per_page=${this.repo_count}&sort=${this.order}&client_id=${this.client_id}&client_secret=${this.client_secret}`;
 
     let response1 = await fetch(profile_url);
     let userData = await response1.json();
+
+    // Get user repositories
+    let repo_url = `https://api.github.com/users/${user}/repos?per_page=${this.repo_count}&sort=${this.order}&client_id=${this.client_id}&client_secret=${this.client_secret}`;
 
     let response2 = await fetch(repo_url);
     let userRepo = await response2.json();
