@@ -1,8 +1,8 @@
 // Create Github instance
-const github = new Github;
+const github = new Github();
 
 // Create UserInterface instance
-const ui = new Ui;
+const ui = new Ui();
 
 // Hide alert div initially
 document.querySelector(".alert").style.display = "none";
@@ -20,12 +20,13 @@ user_field.addEventListener("keyup", (e) => {
     let userData = github.getUserProfile(username);
 
     userData.then((data) => {
-      if (data.message == "Not Found") {
+      if (data.userData.message == "Not Found") {
         // Show error User does not exist
         console.log("User not found");
         ui.userNotFoundAlert();
       } else {
-        ui.showProfile(data);
+        ui.showProfile(data.userData);
+        ui.showRepos(data.userRepo);
       }
     });
   } else {

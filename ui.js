@@ -1,12 +1,12 @@
 class Ui {
-    // UI methods to manipulate frontend display
-    constructor() {
-        this.profile = document.querySelector("#profile");
-    }
+  // UI methods to manipulate frontend display
+  constructor() {
+    this.profile = document.querySelector("#profile");
+  }
 
-    // Display user profile
-    showProfile(userData) {
-        this.profile.innerHTML = `
+  // Display user profile
+  showProfile(userData) {
+    this.profile.innerHTML = `
         <div class="card card-body mt-2">
         <div class="row">
           <div class="col-md-4">
@@ -26,22 +26,24 @@ class Ui {
           </div>
         </div>
       </div>
-        `
-    }
+        `;
+  }
 
-    // Clear results if search bar is empty
-    clearProfile() {
-        this.profile.innerHTML = "";
-    }
+  showRepos(userRepo) {
+    console.log(userRepo);
+  }
 
-    // Show alert if username doesn't exist in GitHub
-    userNotFoundAlert() {
-        let alert_box = document.querySelector(".alert")
-        alert_box.style.display = "block";
-        setTimeout(() => {
-            alert_box.style.display = "none"
-        }, 2000);
-    }
+  // Clear results if search bar is empty
+  clearProfile() {
+    this.profile.innerHTML = "";
+  }
 
-
+  // Show alert if username doesn't exist in GitHub
+  userNotFoundAlert() {
+    let alert_box = document.querySelector(".alert");
+    alert_box.style.display = "block";
+    setTimeout(() => {
+      alert_box.style.display = "none";
+    }, 2000);
+  }
 }
