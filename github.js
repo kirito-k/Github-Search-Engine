@@ -1,14 +1,14 @@
 // Performs all Github fetch operations
 class Github {
   constructor() {
-    let config;
     fetch("config.json")
       .then((data) => {
         return data.json();
       })
       .then((data) => {
-        this.client_id = data.client_id;
-        this.client_secret = data.client_secret;
+        this.headers = {
+          "Authorization": `Token ${data.token}`
+        }
       });
 
     this.repo_count = 5;
@@ -17,16 +17,16 @@ class Github {
 
   async getUserProfile(user) {
     // Get user profile info
-    let profile_url = `https://api.github.com/users/${user}?client_id=${this.client_id}&client_secret=${this.client_secret}`;
-
-    let response1 = await fetch(profile_url);
-    let userData = await response1.json();
-
+    let profile_url = `https://api.github.com/users/${user}`;
+    let userData = await fetch(profile_url, {"method": "GET", headers: this.headers})
+                      .then(res => res.json())
+                      .catch(err => console.log("something1"));
+    
     // Get user repositories
-    let repo_url = `https://api.github.com/users/${user}/repos?per_page=${this.repo_count}&sort=${this.order}&client_id=${this.client_id}&client_secret=${this.client_secret}`;
-
-    let response2 = await fetch(repo_url);
-    let userRepo = await response2.json();
+    let repo_url = `https://api.github.com/users/${user}/repos?per_page=${this.repo_count}&sort=${this.order}`;
+    let userRepo = await fetch(repo_url, {"method": "GET", headers: this.headers})
+                      .then(res => res.json())
+                      .catch(err => console.log("something2"))
 
     return {
       userData: userData,

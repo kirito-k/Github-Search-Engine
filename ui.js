@@ -32,7 +32,6 @@ class Ui {
 
   // Display user repositories part
   showRepos(userRepo) {
-    console.log(userRepo);
     let content = "<h2 class='m-2'>Latest Repos</h2>";
     userRepo.forEach((repo) => {
       content += `
@@ -62,6 +61,7 @@ class Ui {
   // Clear results if search bar is empty
   clearProfile() {
     this.profile.innerHTML = "";
+    this.repos.innerHTML = "";
   }
 
   // Show alert if username doesn't exist in GitHub
