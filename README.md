@@ -1,4 +1,4 @@
-# GitHub Search Engine
+# Github Search Engine
 Created a Github user finder application that takes a text input and immediately renders the user's data and top 5 repositories.
 
 This project is made purely in JavaScript and showcases advanced ES6+ features like arrow functions, Fetch API, Promises, Async-await, Classes, etc.
