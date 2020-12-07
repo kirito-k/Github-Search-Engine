@@ -23,7 +23,7 @@ Live version of app: https://github-search-engine-kiritok.herokuapp.com/
 - Click on "Generate new token".
 - Write a Note on why you want to create this token and select the "public_repo" option as shown in the image below and submit. This will create a personal access token. You need this token so that you can make GitHub API calls to retrieve user profiles without providing your actual username and password to API (a very bad practice).
 
-<img src="https://raw.githubusercontent.com/kirito-k/github_search_engine/main/demo/access_token_tutorial.png" title="Token generation tutorial" />
+<img src="https://raw.githubusercontent.com/kirito-k/github_search_engine/main/demo/access_token_tutorial.png" title="Token generation tutorial" border="1" width="550" height="400" />
 
 - Copy the token key shown. We will use it in the next step. 
 - Replace your Token key in the config.json file.
